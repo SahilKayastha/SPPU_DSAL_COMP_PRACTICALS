@@ -2,8 +2,6 @@
 #include <string>
 #include <iomanip>
 using namespace std;
-
-//Two classes are defined here. The first class is Graph which has a private member variable V which is the number of vertices in the graph. The adjacency matrix is stored in a 2D array adjMatrix. The class has a constructor which initializes the adjacency matrix with INF (infinity) and sets the diagonal elements to 0. The addEdge function is used to add an edge between two vertices. The setCityName function is used to set the name of a city. The displayGraph function is used to display the adjacency matrix along with the city names. The second class is the main function which takes the number of cities as input and creates a Graph object with the given number of vertices. It then takes the names of the cities as input and adds edges between the cities based on user input. Finally, it displays the adjacency matrix along with the city names.
 const int MAX_VERTICES = 100;
 
 class Graph {
