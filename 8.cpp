@@ -16,11 +16,7 @@ class OBST {
         int cost[10][10];   // cost of the tree
         int weight[10][10]; // weight of the tree
 
-        int rear, front, queue[20]; // queue for storing the tree
-
     public:
-        OBST(): rear(-1), front(-1) {}
-
         void acceptInput(){
             cout<<"Enter the number of keys: ";
             cin>>n;
@@ -68,7 +64,7 @@ class OBST {
             weight[n][n] = q[n];
             root[n][n] = 0;
             cost[n][n] = 0;
-
+            
             for(m = 2; m <= n; m++) {
                 for(i = 0; i <= n-m; i++) {
                     j = i + m;
@@ -80,38 +76,37 @@ class OBST {
             }
         }
 
-        void printTree() {
-           int i,j,k;
-           cout<<"Root is "<<keys[root[0][n]]<<endl;
-           cout<<"cost is "<<cost[0][n]<<endl;
-           cout<<"\n\n\tNODE\tLEFT\tRIGHT\n\n";
-           cout<<"-----------------------------------------\n";
-           queue[++rear] = 0;
-           queue[++rear] = n;
-           while(rear != front) {
-               i = queue[++front];
-               j = queue[++front];
-               k = root[i][j];
-               cout<<"\n\t"<<k;
-               if(root[i][k-1] != 0){
-                cout<<"\t"<<keys[root[i][k-1]];
-                queue[++rear] = i;
-                queue[++rear] = k-1;
-               } else{
-                cout<<"\tNULL";
-               }
+void printTree() {
+    cout << "Root is " << keys[root[0][n]] << endl;
+    cout << "Cost is " << cost[0][n] << endl;
+    cout << "\n\n\tNODE\tLEFT\tRIGHT\n\n";
+    cout << "-----------------------------------------\n";
+    printSubtree(root[0][n], 0, n);
+}
 
-               if(root[k][j] != 0){
-                cout<<"\t"<<keys[root[k][j]];
-                queue[++rear] = k;
-                queue[++rear] = j;
-               } else{
-                cout<<"\tNULL";
-               }
-
-               cout<<endl;
-           }
-        }
+void printSubtree(int rootIdx, int start, int end) {
+    if (rootIdx == 0) {
+        return;
+    }
+    cout << "\n\t" << rootIdx;
+    int leftIdx = root[start][rootIdx - 1];
+    int rightIdx = root[rootIdx][end];
+    
+    if (leftIdx == 0) {
+        cout << "\t" << "-";
+    } else {
+        cout << "\t" << keys[leftIdx];
+    }
+    
+    if (rightIdx == 0) {
+        cout << "\t" << "-";
+    } else {
+        cout << "\t" << keys[rightIdx];
+    }
+    
+    printSubtree(leftIdx, start, rootIdx - 1);
+    printSubtree(rightIdx, rootIdx, end);
+}
 };
 
 int main() {
