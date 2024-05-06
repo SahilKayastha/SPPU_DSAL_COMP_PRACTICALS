@@ -131,31 +131,3 @@ int main(){
     
     return 0;
 }
-
-/*
-In this function, we are reading from "students.dat" and writing to "temp.dat", so we use both ifstream and ofstream.
-Thought Process for Building Function:
-        Open the input file for reading and the output file for writing.
-        Handle errors if files fail to open.
-        Iterate through each record in the input file.
-        If the record matches the one to be deleted, skip it; otherwise, write it to the output file.
-        Close both files.
-        Remove the original file and rename the temporary file.
-        Provide appropriate output messages based on the result of the deletion operation.
-Necessary Lines of Code:
-Opening files, error checking, iterating through records, file manipulation, and output message are necessary.
-*/
-
-/*
-Necessary Lines of Code:
-Opening the file, error checking, input from the user, writing to the file, and closing the file are necessary for this function to operate correctly.
-
-Use ifstream for reading from files and ofstream for writing to files.
-
-The write() function is used to write binary data to a file.
-        ~ Pointer to Data to be Written: The first parameter of the write() function is a pointer to the data that you want to write to the file. The data could be of any type, but it's commonly used with char* pointers for writing binary data. If you're writing a struct or class object, use the address-of operator (&) to get the address of the object.
-        ~ Size of Data in Bytes: the size of the data to be written, specified in bytes. If you're writing a struct or class object, use the sizeof() operator to calculate the size of the object in bytes.
-
-reinterpret_cast<char*>(&student) is a type of type casting in C++, specifically used to convert one pointer type to another. 
-    ~ reinterpret_cast<new_type>(expression)
-*/
