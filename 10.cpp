@@ -4,7 +4,7 @@
 using namespace std;
 
 void buildMaxHeap(int arr[], int n) {
-    for (int i = n / 2 - 1; i >= 0; i--) {
+    for (int i = n / 2 - 1; i >= 0; i--) {  //n / 2 - 1 represents the index of the last non-leaf node in a binary heap of size n. 
         int parent = i;
         int leftChild = 2 * parent + 1;
         int rightChild = 2 * parent + 2;
